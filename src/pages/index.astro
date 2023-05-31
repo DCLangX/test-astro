@@ -1,6 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import { getImage,Image  } from 'astro:assets'
+const optimizedLogoImg = await getImage({
+	src: 'https://avatars.githubusercontent.com/u/19513657?v=4',
+  width: 500,
+  height: 500,
+  quality: 'low',
+})
 ---
 
 <Layout title="Welcome to Astro.">
@@ -32,7 +39,22 @@ import Card from '../components/Card.astro';
 				body="Come say hi to our amazing Discord community. ❤️"
 			/>
 		</ul>
-	</main>
+  	<img src={optimizedLogoImg.src} alt="test" />
+		<Image
+  		src={optimizedLogoImg.src}
+  		width="500"
+  		height="500"
+			quality="low"
+  		alt="A description of my image."
+		/>
+		<Image
+  		src="https://avatars.githubusercontent.com/u/19513657?v=4"
+  		width="500"
+  		height="500"
+			quality="low"
+  		alt="A description of my image."
+		/>
+</main>
 </Layout>
 
 <style>
